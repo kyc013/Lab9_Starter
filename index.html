@@ -101,62 +101,60 @@
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
     // Start your code here
-// You may move this JS to another file if you wish
-
-let buttons = Array.from(document.querySelectorAll('#error-btns > button'));
-
-buttons.forEach((button) => {
-  button.addEventListener('click', (e) => {
-    let btn = e.target.textContent;
-    switch (btn) {
-      case 'Console Log':
-        console.log('Console Log');
-        break;
-      case 'Console Error':
-        console.error('Console Error');
-        break;
-      case 'Console Count':
-        console.count('Count');
-        break;
-      case 'Console Warn':
-        console.warn('Console Warn');
-        break;
-      case 'Console Assert':
-        console.assert(true, 'Console Assert');
-        break;
-      case 'Console Clear':
-        console.clear();
-        break;
-      case 'Console Dir':
-        console.dir(document.body);
-        break;
-      case 'Console dirxml':
-        console.dirxml(document.body);
-        break;
-      case 'Console Group Start':
-        console.group();
-        break;
-      case 'Console Group End':
-        console.groupEnd();
-        break;
-      case 'Console Table':
-        console.table({ foo: 'bar', baz: 'qux' });
-        break;
-      case 'Start Timer':
-        console.time('Timer');
-        break;
-      case 'End Timer':
-        console.timeEnd('Timer');
-        break;
-      case 'Console Trace':
-        console.trace();
-        break;
-      case 'Trigger a Global Error':
-        throw new Error('Error thrown from Console');
-        break;
-    }
-  });
-});
+    // You may move this JS to another file if you wish
+    
+    buttons.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        let btn = e.target.textContent;
+        switch (btn) {
+          case 'Console Log':
+            console.log('Console Log');
+            break;
+          case 'Console Error':
+            console.error('Console Error');
+            break;
+          case 'Console Count':
+            console.count('Count');
+            break;
+          case 'Console Warn':
+            console.warn('Console Warn');
+            break;
+          case 'Console Assert':
+            console.assert(true, 'Console Assert');
+            break;
+          case 'Console Clear':
+            console.clear();
+            break;
+          case 'Console Dir':
+            console.dir(document.body);
+            break;
+          case 'Console dirxml':
+            console.dirxml(document.body);
+            break;
+          case 'Console Group Start':
+            console.group();
+            break;
+          case 'Console Group End':
+            console.groupEnd();
+            break;
+          case 'Console Table':
+            console.table({ foo: 'bar', baz: 'qux' });
+            break;
+          case 'Start Timer':
+            console.time('Timer');
+            break;
+          case 'End Timer':
+            console.timeEnd('Timer');
+            break;
+          case 'Console Trace':
+            console.trace();
+            break;
+          case 'Trigger a Global Error':
+            throw new Error('Error thrown from Console');
+            break;
+        }
+      });
+    });
   </script>
 </body>
 
