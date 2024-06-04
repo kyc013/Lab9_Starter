@@ -1,198 +1,113 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
+  <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 9</title> <style> /* styles are not affected by the fix */ </style> </head> <body> <main> <form> <fieldset> <legend>Error Calculator</legend>
+      <input name="first-num" id="first-num" /> <select name="operator" id="operator"> <option>+</option> <option>-</option> <option>*</option> <option>/</option> </select> <input name="second-num" id="second-num" /> <button id="calculate">Calculate</button> <br /> <output></output> </fieldset> </form>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 9</title>
+      
 
-  <style>
-    button {
-      margin: 3px;
-    }
+  <section id="error-btns">
+    <button>Console Log</button>
+    <button>Console Error</button>
+    <button>Console Count</button>
+    <button>Console Warn</button>
+    <button>Console Assert</button>
+    <button>Console Clear</button>
+    <button>Console Dir</button>
+    <button>Console dirxml</button>
+    <button>Console Group Start</button>
+    <button>Console Group End</button>
+    <button>Console Table</button>
+    <button>Start Timer</button>
+    <button>End Timer</button>
+    <button>Console Trace</button>
+    <button>Trigger a Global Error</button>
+  </section>
 
-    button:hover {
-      cursor: pointer;
-    }
+  <!-- Add TrackJS tracking script -->
+  <script src="https://cdn.jsdelivr.net/npm/trackjs@3.2.0/dist/trackjs.min.js"></script>
 
-    #first-num,
-    #second-num {
-      width: 60px;
-    }
+  <!-- Add event listener to error buttons -->
+  let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
-    output {
-      border: 1px solid gray;
-      display: block;
-      height: 18px;
-      margin-top: 5px;
-      padding: 5px;
-      width: 240px;
-    }
-
-    main {
-      width: 800px;
-    }
-
-    #error-btns {
-      column-gap: 5px;
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 30px;
-      row-gap: 5px;
-    }
-
-    #error-btns>* {
-      padding: 8px 2px;
-      width: 122px;
-    }
-  </style>
-</head>
-
-<body>
-  <main>
-    <form>
-      <fieldset>
-        <legend>Error Calculator</legend>
-        <input name="first-num" id="first-num" />
-        <select name="operator" id="operator">
-          <option>+</option>
-          <option>-</option>
-          <option>*</option>
-          <option>/</option>
-        </select>
-        <input name="second-num" id="second-num" />
-        <button id="calculate">Calculate</button>
-        <br />
-        <output></output>
-      </fieldset>
-    </form>
-
-    <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
-      <button>Trigger a Global Error</button>
-    </section>
-
-    <!-- Add TrackJS tracking script -->
-    <script src="https://cdn.jsdelivr.net/npm/trackjs@3.2.0/dist/trackjs.min.js"></script>
-
-    <!-- Add event listener to error buttons -->
-    let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-
-    errorBtns.forEach((button) => {
-      button.addEventListener('click', () => {
-        let output = document.querySelector('output');
-        switch (button.textContent) {
-          case 'Console Log':
-            console.log('This is a console log message');
-            break;
-          case 'Console Error':
-            console.error('This is a console error message');
-            break;
-          case 'Console Count':
-            console.count('Counting');
-            break;
-          case 'Console Warn':
-            console.warn('This is a console warning message');
-            break;
-          case 'Console Assert':
-            try {
-              assert(1 === 2, 'This assertion should fail');
-            } catch (error) {
-              console.error(error);
-            }
-            break;
-          case 'Console Clear':
-            console.clear();
-            break;
-          case 'Console Dir':
-            console.dir(window);
-            break;
-          case 'Console Dirxml':
-            console.dirxml(document.body);
-            break;
-          case 'Console Group Start':
-            console.group('My group');
-            break;
-          case 'Console Group End':
-            console.groupEnd();
-            break;
-          case 'Console Table':
-            let data = [
-              { name: 'John', age: 25 },
-              { name: 'Jane', age: 30 },
-              { name: 'Bob', age: 35 },
-            ];
-            console.table(data);
-            break;
-          case 'Start Timer':
-            console.time('My timer');
-            break;
-          case 'End Timer':
-            console.timeEnd('My timer');
-            break;
-          case 'Console Trace':
-            try {
-              throw new Error('This is a custom error message');
-            } catch (error) {
-              console.trace(error);
-            }
-            break;
-        }
-      });
-    });
-
-    // Add event listener to Trigger a Global Error button
-    document.querySelector('#error-btns > button:nth-child(13)').addEventListener('click', () => {
-      try {
-        throw new Error('This is a global error message');
-      } catch (error) {
-        TRACKJS.log(error);
+  errorBtns.forEach((button) => {
+    button.addEventListener('click', () => {
+      let output = document.querySelector('output');
+      switch (button.textContent) {
+        case 'Console Log':
+          console.log('This is a console log message');
+          break;
+        case 'Console Error':
+          console.error('This is a console error message');
+          break;
+        case 'Console Count':
+          console.count('Counting');
+          break;
+        case 'Console Warn':
+          console.warn('This is a console warning message');
+          break;
+        case 'Console Assert':
+          try {
+            assert(1 === 2, 'This assertion should fail');
+          } catch (error) {
+            console.error(error);
+          }
+          break;
+        case 'Console Clear':
+          console.clear();
+          break;
+        case 'Console Dir':
+          console.dir(window);
+          break;
+        case 'Console Dirxml':
+          console.dirxml(document.body);
+          break;
+        case 'Console Group Start':
+          console.group('My group');
+          break;
+        case 'Console Group End':
+          console.groupEnd();
+          break;
+        case 'Console Table':
+          let data = [
+            { name: 'John', age: 25 },
+            { name: 'Jane', age: 30 },
+            { name: 'Bob', age: 35 },
+          ];
+          console.table(data);
+          break;
+        case 'Start Timer':
+          console.time('My timer');
+          break;
+        case 'End Timer':
+          console.timeEnd('My timer');
+          break;
+        case 'Console Trace':
+          try {
+            throw new Error('This is a custom error message');
+          } catch (error) {
+            console.trace(error);
+          }
+          break;
       }
     });
-  </script>
+  });
 
-</body>
+  // Add event listener to Trigger a Global Error button
+  document.querySelector('#error-btns > button:nth-child(13)').addEventListener('click', () => {
+    try {
+      throw new Error('This is a global error message');
+    } catch (error) {
+      TRACKJS.log(error);
+    }
+  });
 
-</html>
-
-<!-- Add custom error type -->
-<script>
-class MyError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'MyError';
-    this.message = message;
-  }
-}
-
-// Add event listener to Trigger a Global Error button
-document.querySelector('#error-btns > button:nth-child(13)').addEventListener('click', () => {
-  try {
-    throw new MyError('This is a custom error message');
-  } catch (error) {
-    console.error('Error caught:', error);
-  }
-});
 </script>
 
 <!-- Add event listener to form submission -->
 let form = document.querySelector('form');
-form.addEventListener('submit', e => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   let output = document.querySelector('output');
   let firstNum = document.querySelector('#first-num').value;
