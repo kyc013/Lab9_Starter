@@ -103,9 +103,9 @@
     // Start your code here
 // You may move this JS to another file if you wish
 
-let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
+let buttons = Array.from(document.querySelectorAll('#error-btns > button'));
 
-errorBtns.forEach((button) => {
+buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
     let btn = e.target.textContent;
     switch (btn) {
