@@ -1,9 +1,65 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-  <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 9</title> <style> /* styles are not affected by the fix */ </style> </head> <body> <main> <form> <fieldset> <legend>Error Calculator</legend>
-      <input name="first-num" id="first-num" /> <select name="operator" id="operator"> <option>+</option> <option>-</option> <option>*</option> <option>/</option> </select> <input name="second-num" id="second-num" /> <button id="calculate">Calculate</button> <br /> <output></output> </fieldset> </form>
+  <head>
+    <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 9</title>
+    <style>     
+    button {
+      margin: 3px;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    #first-num,
+    #second-num {
+      width: 60px;
+    }
+
+    output {
+      border: 1px solid gray;
+      display: block;
+      height: 18px;
+      margin-top: 5px;
+      padding: 5px;
+      width: 240px;
+    }
+
+    main {
+      width: 800px;
+    }
+
+    #error-btns {
+      column-gap: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      row-gap: 5px;
+    }
+
+    #error-btns>* {
+      padding: 8px 2px;
+      width: 122px;
+    }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form>
+        <fieldset>
+          <legend>Error Calculator</legend>
+      <input name="first-num" id="first-num" />
+          <select name="operator" id="operator">
+            <option>+</option> <option>-</option>
+            <option>*</option> <option>/</option>
+          </select> <input name="second-num" id="second-num" />
+          <button id="calculate">Calculate</button>
+          <br /> <output></output>
+        </fieldset>
+      </form>
 
       
 
